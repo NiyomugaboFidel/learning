@@ -7,8 +7,19 @@ dotenv.config();
 const port  =  process.env.PORT 
 const app =  express();
 
+app.use(express.json())
 
-app.use('/api/v1/', AuthRouter);
+
+app.get('/',(req, res)=>{
+    
+    res.status(200).json({message:"system is working successfully."});
+})
+
+
+
+app.use(AuthRouter);
+
+
 
 app.listen(port, ()=>{
     connectionDb()
